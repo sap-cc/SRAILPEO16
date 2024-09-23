@@ -1,0 +1,264 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/srail/PEO_MISSPARTS_SRV/$metadata">
+        <edmx:Include Namespace="SRAIL.PEO_MISSPARTS_SRV"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDERType/Status">
+                <Annotation Term="Common.Label" String="{@i18n>status}" />
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDERType/ProductionController">
+                <Annotation Term="Common.Label" String="{@i18n>productionController}" />
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDERType/BOMItemNodeNumber">
+                <Annotation Term="Common.Label" String="{@i18n>bomItemNodeNumber}" />
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDERType/Takt">
+                <Annotation Term="Common.Label" String="{@i18n>takt}" />
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDERType/TaktOffset">
+                <Annotation Term="Common.Label" String="{@i18n>taktoffset}" />
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDERType/TaktOffsetUnit">
+                <Annotation Term="Common.Label" String="{@i18n>taktoffsetunit}" />
+            </Annotations>
+
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDERType">
+                <Annotation Term="UI.PresentationVariant">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="RequestAtLeast">
+                            <Collection>
+                                <PropertyPath>COGI</PropertyPath>
+                                <PropertyPath>LIEF</PropertyPath>
+                                <PropertyPath>Material</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+                <!-- Filter -->
+                <!--Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Identification</PropertyPath>
+                        <PropertyPath>Status</PropertyPath>
+                        <PropertyPath>ProductionController</PropertyPath>
+                        <PropertyPath>Takt</PropertyPath>
+                        <PropertyPath>TaktOffset</PropertyPath>
+                    </Collection>
+                </Annotation-->
+
+                <!-- List Title / Object Page Header -->
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="{@i18n>tableTitle}" />
+                        <PropertyValue Property="TypeNamePlural" String="{@i18n>tableTitles}" />
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Identification" />
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="ActivityDescription" />
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+                <!-- Fields -->
+
+                <!--Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataFieldWithIntentBasedNavigation">
+                            <PropertyValue Property="Value" Path="Material"/>
+                            <PropertyValue Property="SemanticObject" String="ZMissingParts"/>
+                            <PropertyValue Property="Action" String="cogi"/>
+                        </Record>
+                    </Collection>
+                </Annotation-->
+               
+                
+            </Annotations>
+
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.C_MfgOrderObjPgType">
+                <!-- Object Page Header -->
+                <!--Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="{@i18n>test}" />
+                        <PropertyValue Property="TypeNamePlural" String="{@i18n>tests}" />
+                        
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="ProductionOrder" />
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation-->
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="{@i18n>generalInformation}"/>
+                            <PropertyValue Property="ID" String="GeneralInfo"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="{@i18n>details}"/>
+                                        <PropertyValue Property="ID" String="Details"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Details"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="{@i18n>details2}"/>
+                                        <PropertyValue Property="ID" String="DetailsTest"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Details2"/>
+                                    </Record>
+                        
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="{@i18n>dates}"/>
+                            <PropertyValue Property="ID" String="Dates"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Dates"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+
+                <Annotation Term="UI.FieldGroup" Qualifier="Details">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ManufacturingOrderType"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MRPArea"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ManufacturingObject"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MfgOrderConfirmedYieldQty"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ProductionVersion"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SalesOrder"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SalesOrderItem"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PlannedOrder"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+                <Annotation Term="UI.FieldGroup" Qualifier="Details2">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="CustomerName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="WBSElement"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="WBSElementInternalID"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="WBSDescription"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="CompanyCode"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="FunctionalArea"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PlannedCostsCostingVariant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="CostingVariantName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ActualCostsCostingVariant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="TargetCostVariantName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="OrderIsEventBasedPosting"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="UserID"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MRPController"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ProductionSupervisor"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ManufacturingOrderCategory"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="StockSegment"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+                <Annotation Term="UI.FieldGroup" Qualifier="Dates">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MfgOrderPlannedStartDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MfgOrderPlannedStartTime"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MfgOrderPlannedEndDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MfgOrderPlannedEndTime"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MfgOrderScheduledStartDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MfgOrderScheduledStartTime"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MfgOrderScheduledEndDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="MfgOrderScheduledEndTime"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+            </Annotations>
+            
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
